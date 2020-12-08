@@ -6,11 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/jon/CLionProjects/CoMa/library.cpp
-library.h
-/home/jon/CLionProjects/CoMa/library.h
-iostream
--
+/home/jon/CLionProjects/CoMa/bisection.cpp
+bisection.h
+/home/jon/CLionProjects/CoMa/bisection.h
 
-/home/jon/CLionProjects/CoMa/library.h
+/home/jon/CLionProjects/CoMa/bisection.h
 

@@ -156,6 +156,33 @@ CoMa/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CoMa.dir/build.make CMakeFiles/CoMa.dir/build
 .PHONY : CoMa/fast
 
+bisection.o: bisection.cpp.o
+
+.PHONY : bisection.o
+
+# target to build an object file
+bisection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CoMa.dir/build.make CMakeFiles/CoMa.dir/bisection.cpp.o
+.PHONY : bisection.cpp.o
+
+bisection.i: bisection.cpp.i
+
+.PHONY : bisection.i
+
+# target to preprocess a source file
+bisection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CoMa.dir/build.make CMakeFiles/CoMa.dir/bisection.cpp.i
+.PHONY : bisection.cpp.i
+
+bisection.s: bisection.cpp.s
+
+.PHONY : bisection.s
+
+# target to generate assembly for a file
+bisection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CoMa.dir/build.make CMakeFiles/CoMa.dir/bisection.cpp.s
+.PHONY : bisection.cpp.s
+
 library.o: library.cpp.o
 
 .PHONY : library.o
@@ -220,6 +247,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CoMa"
 	@echo "... test"
+	@echo "... bisection.o"
+	@echo "... bisection.i"
+	@echo "... bisection.s"
 	@echo "... library.o"
 	@echo "... library.i"
 	@echo "... library.s"

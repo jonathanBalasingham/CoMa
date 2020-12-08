@@ -126,6 +126,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/jon/CLionProjects/CoMa/bisection.cpp">
+			<Option target="CoMa"/>
+		</Unit>
+		<Unit filename="/home/jon/CLionProjects/CoMa/bisection.h">
+			<Option target="CoMa"/>
+		</Unit>
 		<Unit filename="/home/jon/CLionProjects/CoMa/library.cpp">
 			<Option target="CoMa"/>
 		</Unit>
@@ -134,6 +140,12 @@
 		</Unit>
 		<Unit filename="/home/jon/CLionProjects/CoMa/main.cpp">
 			<Option target="test"/>
+		</Unit>
+		<Unit filename="/home/jon/CLionProjects/CoMa/newton.h">
+			<Option target="CoMa"/>
+		</Unit>
+		<Unit filename="/home/jon/CLionProjects/CoMa/util.h">
+			<Option target="CoMa"/>
 		</Unit>
 		<Unit filename="/home/jon/CLionProjects/CoMa/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

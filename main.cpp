@@ -5,6 +5,7 @@
 
 int main(){
     hello();
+    CoMa::bisection();
     return 0;
 }
 
