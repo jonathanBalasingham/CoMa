@@ -6,13 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/jon/CLionProjects/CoMa/bisection.h
+/home/jon/CLionProjects/CoMa/LinearEquations.h
+cstdlib
+-
+cstdio
+-
+iostream
+-
+util.h
+/home/jon/CLionProjects/CoMa/util.h
 
 /home/jon/CLionProjects/CoMa/library.h
-bisection.h
-/home/jon/CLionProjects/CoMa/bisection.h
 
 /home/jon/CLionProjects/CoMa/main.cpp
 library.h
 /home/jon/CLionProjects/CoMa/library.h
+LinearEquations.h
+/home/jon/CLionProjects/CoMa/LinearEquations.h
+
+/home/jon/CLionProjects/CoMa/util.h
 

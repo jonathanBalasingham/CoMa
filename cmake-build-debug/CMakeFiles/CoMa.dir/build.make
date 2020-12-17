@@ -90,32 +90,17 @@ CMakeFiles/CoMa.dir/library.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CoMa.dir/library.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jon/CLionProjects/CoMa/library.cpp -o CMakeFiles/CoMa.dir/library.cpp.s
 
-CMakeFiles/CoMa.dir/bisection.cpp.o: CMakeFiles/CoMa.dir/flags.make
-CMakeFiles/CoMa.dir/bisection.cpp.o: ../bisection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jon/CLionProjects/CoMa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CoMa.dir/bisection.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CoMa.dir/bisection.cpp.o -c /home/jon/CLionProjects/CoMa/bisection.cpp
-
-CMakeFiles/CoMa.dir/bisection.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CoMa.dir/bisection.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jon/CLionProjects/CoMa/bisection.cpp > CMakeFiles/CoMa.dir/bisection.cpp.i
-
-CMakeFiles/CoMa.dir/bisection.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CoMa.dir/bisection.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jon/CLionProjects/CoMa/bisection.cpp -o CMakeFiles/CoMa.dir/bisection.cpp.s
-
 # Object files for target CoMa
 CoMa_OBJECTS = \
-"CMakeFiles/CoMa.dir/library.cpp.o" \
-"CMakeFiles/CoMa.dir/bisection.cpp.o"
+"CMakeFiles/CoMa.dir/library.cpp.o"
 
 # External object files for target CoMa
 CoMa_EXTERNAL_OBJECTS =
 
 libCoMa.a: CMakeFiles/CoMa.dir/library.cpp.o
-libCoMa.a: CMakeFiles/CoMa.dir/bisection.cpp.o
 libCoMa.a: CMakeFiles/CoMa.dir/build.make
 libCoMa.a: CMakeFiles/CoMa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jon/CLionProjects/CoMa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libCoMa.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jon/CLionProjects/CoMa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libCoMa.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/CoMa.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CoMa.dir/link.txt --verbose=$(VERBOSE)
 

@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jon/CLionProjects/CoMa/bisection.cpp" "/home/jon/CLionProjects/CoMa/cmake-build-debug/CMakeFiles/CoMa.dir/bisection.cpp.o"
   "/home/jon/CLionProjects/CoMa/library.cpp" "/home/jon/CLionProjects/CoMa/cmake-build-debug/CMakeFiles/CoMa.dir/library.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

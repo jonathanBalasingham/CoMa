@@ -7,6 +7,13 @@
 
 namespace CoMa {
     typedef void (* RealValuedFunc)(float x);
+
+    struct Interval {
+        float a;
+        float b;
+        Interval(float a, float b) : a(a), b(b) {}
+    };
+
 }
 
 #endif //COMA_UTIL_H

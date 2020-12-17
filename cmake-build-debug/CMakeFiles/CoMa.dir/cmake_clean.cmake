@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/CoMa.dir/bisection.cpp.o"
   "CMakeFiles/CoMa.dir/library.cpp.o"
   "libCoMa.a"
   "libCoMa.pdb"

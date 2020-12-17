@@ -1,2 +1,2 @@
-/usr/bin/ar qc libCoMa.a  CMakeFiles/CoMa.dir/library.cpp.o CMakeFiles/CoMa.dir/bisection.cpp.o
+/usr/bin/ar qc libCoMa.a  CMakeFiles/CoMa.dir/library.cpp.o
 /usr/bin/ranlib libCoMa.a
