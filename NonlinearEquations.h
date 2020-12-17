@@ -37,7 +37,6 @@ namespace CoMa {
                 k++;
             }
 
-            std::cout << f(xk) << " , ";
         }
 
         if (verbose)
@@ -46,8 +45,27 @@ namespace CoMa {
         return xk;
     }
 
-    float newton(RealValuedFunc f, Interval *ab, float tol = .00001, int max_iter = 1000) {
-        return 0.;
+    float newton(float f(float), Interval *ab, float tol = .00001, int max_iter = 1000, bool verbose = true) {
+        float xk = (ab->a + ab->b) / 2;
+        int k = 0;
+        while (k < max_iter) {
+
+            xk = xk - f(xk) / derivative_at(f, xk);
+
+            if (std::abs(f(xk)) <= tol) {
+                if (verbose) {
+                    std::cout << "Converged in " << k << " iterations " << std::endl;
+                }
+                return xk;
+            }
+
+            k++;
+        }
+
+        if (verbose)
+            std::cout << "Warning: max iterations reached without reaching tolerance" << std::endl;
+
+        return xk;
     }
 
     float secant(float f(float), Interval *ab, float tol = .00001, int max_iter = 1000, bool verbose = true) {

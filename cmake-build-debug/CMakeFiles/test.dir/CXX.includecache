@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/jon/CLionProjects/CoMa/LinearEquations.h
+/home/jon/CLionProjects/CoMa/NonlinearEquations.h
 cstdlib
 -
 cstdio
@@ -21,8 +21,8 @@ util.h
 /home/jon/CLionProjects/CoMa/main.cpp
 library.h
 /home/jon/CLionProjects/CoMa/library.h
-LinearEquations.h
-/home/jon/CLionProjects/CoMa/LinearEquations.h
+NonlinearEquations.h
+/home/jon/CLionProjects/CoMa/NonlinearEquations.h
 
 /home/jon/CLionProjects/CoMa/util.h
 
