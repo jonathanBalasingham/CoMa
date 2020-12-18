@@ -10,7 +10,7 @@ namespace CoMa {
      *
      *
      */
-    float bisection(float f(float), Interval *ab, float tol = .00001, int max_iter = 1000, bool verbose = true) {
+    float bisection(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
         int k = 0;
         float xk;
         Interval ab_copy = Interval(ab->a, ab->b);
@@ -45,7 +45,7 @@ namespace CoMa {
         return xk;
     }
 
-    float newton(float f(float), Interval *ab, float tol = .00001, int max_iter = 1000, bool verbose = true) {
+    float newton(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
         float xk = (ab->a + ab->b) / 2;
         int k = 0;
         while (k < max_iter) {
@@ -68,8 +68,62 @@ namespace CoMa {
         return xk;
     }
 
-    float secant(float f(float), Interval *ab, float tol = .00001, int max_iter = 1000, bool verbose = true) {
+    /*
+     *  TODO: initialization here could be more optimized
+     *
+     * */
+    float secant(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
 
-        return 0.;
+        float xk = (ab->a + ab->b) / 2;
+        float xk_1 = xk / 2;
+
+        int k = 0;
+        float temp, den;
+
+        while (k < max_iter) {
+            temp = xk;
+            den = f(xk) - f(xk_1);
+
+            xk = xk - f(xk) * ((xk - xk_1) / (den));
+            xk_1 = xk;
+
+            if (std::abs(f(xk)) <= tol) {
+                if (verbose) {
+                    std::cout << "Converged in " << k << " iterations " << std::endl;
+                }
+                return xk;
+            }
+            k++;
+        }
+
+        if (verbose)
+            std::cout << "Warning: max iterations reached without reaching tolerance" << std::endl;
+
+        return xk;
+    }
+
+    float chord(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
+        float xk = (ab->a + ab->b) / 2;
+        int k = 0;
+        float q = (f(ab->b) - f(ab->a)) / (ab->b - ab->a);
+
+        while (k < max_iter) {
+
+            xk = xk - f(xk) / q;
+
+            if (std::abs(f(xk)) <= tol) {
+                if (verbose) {
+                    std::cout << "Converged in " << k << " iterations " << std::endl;
+                }
+                return xk;
+            }
+
+            k++;
+        }
+
+        if (verbose)
+            std::cout << "Warning: max iterations reached without reaching tolerance" << std::endl;
+
+        return xk;
     }
 }

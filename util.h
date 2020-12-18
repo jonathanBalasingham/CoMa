@@ -6,12 +6,18 @@
 #define COMA_UTIL_H
 
 namespace CoMa {
-    typedef void (* RealValuedFunc)(float x);
 
     struct Interval {
         float a;
         float b;
-        Interval(float a, float b) : a(a), b(b) {}
+        Interval(float begin, float end){
+            if (end < begin){
+                throw std::invalid_argument("Cannot create interval where a > b");
+            } else {
+                a = begin;
+                b = end;
+            }
+        }
     };
 
     float derivative_at(float f(float), float x, float h=0.0001, std::string method="center") {
