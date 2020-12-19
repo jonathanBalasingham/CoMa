@@ -45,6 +45,10 @@ namespace CoMa {
         return xk;
     }
 
+    /*
+     *
+     *
+     * */
     float newton(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
         float xk = (ab->a + ab->b) / 2;
         int k = 0;
@@ -78,14 +82,13 @@ namespace CoMa {
         float xk_1 = xk / 2;
 
         int k = 0;
-        float temp, den;
+        float temp;
 
         while (k < max_iter) {
             temp = xk;
-            den = f(xk) - f(xk_1);
 
-            xk = xk - f(xk) * ((xk - xk_1) / (den));
-            xk_1 = xk;
+            xk = xk - f(xk) * ((xk - xk_1) / (f(xk) - f(xk_1)));
+            xk_1 = temp;
 
             if (std::abs(f(xk)) <= tol) {
                 if (verbose) {
@@ -102,6 +105,10 @@ namespace CoMa {
         return xk;
     }
 
+    /*
+     *
+     *
+     * */
     float chord(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
         float xk = (ab->a + ab->b) / 2;
         int k = 0;
