@@ -10,14 +10,14 @@
 
 class Matrix {
 public:
-    Matrix(std::tuple<int,int> sh){ i=std::get<0>(sh); j=std::get<1>(sh); data=new float[i*j]; }
+    explicit Matrix(std::tuple<int,int> sh){ i=std::get<0>(sh); j=std::get<1>(sh); data=new float[i*j]; }
     Matrix(int a, int b){ i = a; j = b; data = new float[i*j]; }
     ~Matrix(){ delete [] this->data; }
     [[nodiscard]] std::tuple<int,int> shape() const { return std::make_tuple(this->i, this->j); }
     [[nodiscard]] int inline entries() const{ return this->i * this->j; }
-    int get_i() const { return i; }
-    int get_j() const { return j; }
-    float get(int x, int y) const { return data[x*i + y]; }
+    [[nodiscard]] int get_i() const { return i; }
+    [[nodiscard]] int get_j() const { return j; }
+    [[nodiscard]] float get(int x, int y) const { return data[x*i + y]; }
     float set(int x, int y, float z){ return data[x*i + y] = z; }
     static Matrix* zeros(int i, int j){ return init_all(i,j, 0.); }
     static Matrix* ones(int i, int j){ return init_all(i,j, 1.); }
@@ -69,10 +69,19 @@ public:
 
     Matrix* reshape(int x, int y){
         auto m = copy();
-        m->i = x;
-        m->j = y;
+        m->i = x; m->j = y;
         return m;
     }
+
+    std::string toString(){
+        std::string m_as_str = "";
+        for (int a = 0; a < entries(); a++){
+            m_as_str += " " + std::to_string(a) + " ";
+            if (a % get_j() == 0) m_as_str += "\n";
+        }
+        return m_as_str;
+    }
+
 
 private:
     float* data;

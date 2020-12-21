@@ -6,7 +6,7 @@
 #define COMA_MATRIXOPERATIONS_H
 
 #include "Matrix.h"
-#include <math.h>
+#include <cmath>
 
 namespace CoMa {
 
@@ -18,27 +18,52 @@ namespace CoMa {
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
         auto m = Matrix::zeros(A.shape());
-        int i = std::get<0>(A.shape());
-        int j = std::get<1>(A.shape());
-        for (int a = 0; a < A.entries(); a++){
-            if (a % i <= floor(j / 2) + 1 )
+        for (int a = 0; a < A.get_i(); a++){
+            for (int b = 0; b < A.get_j(); a++) {
+                if (b <= a)
+                    m->set(a,b, A.get(a,b));
+            }
         }
         return m;
     }
 
-    Matrix upper_triangle(Matrix A){
+    Matrix* upper_triangle(Matrix A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
+        auto m = Matrix::zeros(A.shape());
+        for (int a = 0; a < A.get_i(); a++){
+            for (int b = 0; b < A.get_j(); a++) {
+                if (b >= a)
+                    m->set(a,b, A.get(a,b));
+            }
+        }
+        return m;
     }
 
-    Matrix strict_lower_triangle(Matrix A){
+    Matrix* strict_lower_triangle(Matrix A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
+        auto m = Matrix::zeros(A.shape());
+        for (int a = 0; a < A.get_i(); a++){
+            for (int b = 0; b < A.get_j(); a++) {
+                if (b < a)
+                    m->set(a,b, A.get(a,b));
+            }
+        }
+        return m;
     }
 
-    Matrix strict_upper_triangle(Matrix A){
+    Matrix* strict_upper_triangle(Matrix A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
+        auto m = Matrix::zeros(A.shape());
+        for (int a = 0; a < A.get_i(); a++){
+            for (int b = 0; b < A.get_j(); a++) {
+                if (b > a)
+                    m->set(a,b, A.get(a,b));
+            }
+        }
+        return m;
     }
 
     Matrix* transpose(const Matrix &A){
@@ -50,7 +75,6 @@ namespace CoMa {
         }
         return m;
     }
-
 
 }
 
