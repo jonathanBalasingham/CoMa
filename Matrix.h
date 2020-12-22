@@ -10,10 +10,10 @@
 
 class Matrix {
 public:
-    explicit Matrix(std::tuple<int,int> sh){ i=std::get<0>(sh); j=std::get<1>(sh); data=new float[i*j]; }
-    Matrix(int a, int b){ i = a; j = b; data = new float[i*j]; }
+    explicit Matrix(std::tuple<int,int> sh){ i=std::get<0>(sh); j=std::get<1>(sh); data=new float[i*j]; set_all(0.);}
+    Matrix(int a, int b){ i = a; j = b; data = new float[i*j]; set_all(0.); }
     ~Matrix(){ delete [] this->data; }
-    [[nodiscard]] std::tuple<int,int> shape() const { return std::make_tuple(this->i, this->j); }
+    [[nodiscard]] std::tuple<int,int> shape() const { return std::make_tuple(i,j); }
     [[nodiscard]] int inline entries() const{ return this->i * this->j; }
     [[nodiscard]] int get_i() const { return i; }
     [[nodiscard]] int get_j() const { return j; }
@@ -76,8 +76,8 @@ public:
     std::string toString(){
         std::string m_as_str = "";
         for (int a = 0; a < entries(); a++){
-            m_as_str += " " + std::to_string(a) + " ";
-            if (a % get_j() == 0) m_as_str += "\n";
+            m_as_str += " " + std::to_string(data[a]) + " ";
+            if ((a+1) % get_j() == 0) m_as_str += "\n";
         }
         return m_as_str;
     }
@@ -90,6 +90,10 @@ private:
         auto m = new Matrix(a,b);
         for(a = 0; a < m->entries(); a++) m->data[a] = e;
         return m;
+    }
+
+    void set_all(float el){
+        for(int a = 0; a < entries(); a++) data[a] = el;
     }
 };
 
