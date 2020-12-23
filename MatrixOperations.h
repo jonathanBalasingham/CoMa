@@ -14,12 +14,25 @@ namespace CoMa {
         return std::get<0>(A.shape()) == std::get<1>(A.shape());
     }
 
-    Matrix* lower_triangle(const Matrix &A){
+
+    Matrix* diagonal(const Matrix &A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
         auto m = Matrix::zeros(A.shape());
         for (int a = 0; a < A.get_i(); a++){
-            for (int b = 0; b < A.get_j(); a++) {
+            m->set(a,a, A.get(a,a));
+        }
+        return m;
+    }
+
+    Matrix* lower_triangle(const Matrix &A){
+        if (!is_square(A))
+            throw std::invalid_argument("Matrix must be square");
+        auto m = Matrix::zeros(A.shape());
+
+        for (int a = 0; a < A.get_i(); a++){
+            for (int b = 0; b < A.get_j(); b++) {
+
                 if (b <= a)
                     m->set(a,b, A.get(a,b));
             }
@@ -27,12 +40,12 @@ namespace CoMa {
         return m;
     }
 
-    Matrix* upper_triangle(Matrix A){
+    Matrix* upper_triangle(Matrix &A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
         auto m = Matrix::zeros(A.shape());
         for (int a = 0; a < A.get_i(); a++){
-            for (int b = 0; b < A.get_j(); a++) {
+            for (int b = 0; b < A.get_j(); b++) {
                 if (b >= a)
                     m->set(a,b, A.get(a,b));
             }
@@ -40,12 +53,12 @@ namespace CoMa {
         return m;
     }
 
-    Matrix* strict_lower_triangle(Matrix A){
+    Matrix* strict_lower_triangle(Matrix &A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
         auto m = Matrix::zeros(A.shape());
         for (int a = 0; a < A.get_i(); a++){
-            for (int b = 0; b < A.get_j(); a++) {
+            for (int b = 0; b < A.get_j(); b++) {
                 if (b < a)
                     m->set(a,b, A.get(a,b));
             }
@@ -53,12 +66,12 @@ namespace CoMa {
         return m;
     }
 
-    Matrix* strict_upper_triangle(Matrix A){
+    Matrix* strict_upper_triangle(Matrix &A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
         auto m = Matrix::zeros(A.shape());
         for (int a = 0; a < A.get_i(); a++){
-            for (int b = 0; b < A.get_j(); a++) {
+            for (int b = 0; b < A.get_j(); b++) {
                 if (b > a)
                     m->set(a,b, A.get(a,b));
             }

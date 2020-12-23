@@ -30,7 +30,7 @@ public:
 
     Matrix* copy(){
         auto m = new Matrix(this->shape());
-        for(int ind = 0; i < entries(); ind++)
+        for(int ind = 0; ind < entries(); ind++)
             m->data[ind] = data[ind];
         return m;
     }
@@ -68,6 +68,8 @@ public:
     }
 
     Matrix* reshape(int x, int y){
+        if (x*y != i*j)
+            throw std::invalid_argument("Cannot reshape from " + std::to_string(i) + "," + std::to_string(j) + "to" + std::to_string(x) + "," + std::to_string(y));
         auto m = copy();
         m->i = x; m->j = y;
         return m;
@@ -81,7 +83,6 @@ public:
         }
         return m_as_str;
     }
-
 
 private:
     float* data;
