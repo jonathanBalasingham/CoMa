@@ -89,6 +89,41 @@ namespace CoMa {
         return m;
     }
 
+    Matrix* operator+(Matrix &A, Matrix &B) {
+        if(B.shape() != A.shape()) throw std::invalid_argument("Matrices must have the same shape.");
+        auto m = new Matrix(A.get_i(),A.get_j());
+        for (int a = 0; a < A.get_i(); a++)
+            for (int b = 0; b < A.get_j(); b++)
+                m->set(a,b, A.get(a,b) + B.get(a,b));
+        return m;
+    }
+
+    Matrix* operator-(const Matrix &A, const Matrix &B) {
+        if(B.shape() != A.shape()) throw std::invalid_argument("Matrices must have the same shape.");
+        auto m = new Matrix(A.get_i(),A.get_j());
+        for (int a = 0; a < A.get_i(); a++)
+            for (int b = 0; b < A.get_j(); b++)
+                m->set(a,b, A.get(a,b) - B.get(a,b));
+        return m;
+    }
+
+    Matrix* operator*(float alpha, Matrix &A) {
+        auto m = new Matrix(A.get_i(),A.get_j());
+        for(int a = 0; a < A.entries(); a++) { m->set(a, alpha*A.get(a)); }
+        return m;
+    }
+
+    Matrix* operator*(const Matrix &A, const Matrix &B){
+        if (A.get_j() != B.get_i())
+            throw std::invalid_argument("Number of columns in A must match number of rows in B");
+        auto C = new Matrix(A.get_j(), B.get_i());
+        for (int h = 0; h < A.get_i(); h++)
+            for (int k = 0; k < A.get_j(); k++)
+                for (int l = 0; l < B.get_j(); l++)
+                    C->set(h*C->get_i() + k, C->get(h*C->get_i() + k) + A.get(h*A.get_i() + k) * B.get(k*B.get_j()+l));
+        return C;
+    }
+
 }
 
 #endif //COMA_MATRIXOPERATIONS_H
