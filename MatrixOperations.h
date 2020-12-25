@@ -120,7 +120,7 @@ namespace CoMa {
         for (int h = 0; h < A.get_i(); h++)
             for (int k = 0; k < A.get_j(); k++)
                 for (int l = 0; l < B.get_j(); l++)
-                    C->set(h*C->get_i() + k, C->get(h*C->get_i() + k) + A.get(h*A.get_i() + k) * B.get(k*B.get_j()+l));
+                    C->set(h, l, C->get(h,l) + A.get(h, k) * B.get(k,l));
         return C;
     }
 
