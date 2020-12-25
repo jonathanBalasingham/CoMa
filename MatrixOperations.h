@@ -124,6 +124,17 @@ namespace CoMa {
         return C;
     }
 
+    float norm(const Matrix &M, int p=2){
+        float acc = 0;
+        for (int j = 0; j < M.entries(); j++)
+            acc += pow(M[j],p);
+        return pow(acc, 1/p);
+    }
+
+    float spectral_norm(const Matrix &M){
+
+    }
+
 }
 
 #endif //COMA_MATRIXOPERATIONS_H
