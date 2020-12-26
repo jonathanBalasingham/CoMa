@@ -25,6 +25,10 @@ namespace CoMa {
         return m;
     }
 
+    Matrix* identity(int x){
+        return diagonal(*Matrix::ones(x,x));
+    }
+
     Matrix* lower_triangle(const Matrix &A){
         if (!is_square(A))
             throw std::invalid_argument("Matrix must be square");
@@ -124,6 +128,16 @@ namespace CoMa {
         return C;
     }
 
+    // TODO: switch this so we just square the result until we have to multiply
+    Matrix operator^(const Matrix &A, int x){
+        auto C = A.copy();
+        for (int y = 0; y < x - 1; y++)
+            for (int h = 0; h < A.get_i(); h++)
+                for (int k = 0; k < A.get_j(); k++)
+                    for (int l = 0; l < A.get_j(); l++)
+                        C->set(h, l, C->get(h,l) + A.get(h, k) * A.get(k,l));
+    }
+
     float norm(const Matrix &M, int p=2){
         float acc = 0;
         for (int j = 0; j < M.entries(); j++)
@@ -132,7 +146,7 @@ namespace CoMa {
     }
 
     float spectral_norm(const Matrix &M){
-
+        return 0.;
     }
 
 }
