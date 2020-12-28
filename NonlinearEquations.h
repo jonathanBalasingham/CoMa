@@ -3,6 +3,7 @@
 #include <iostream>
 #include "util.h"
 
+// TODO: Change interval argument
 namespace CoMa {
 
     /*
@@ -10,7 +11,9 @@ namespace CoMa {
      *
      *
      */
-    float bisection(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
+    template<typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+    T bisection(T f(T), Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
         int k = 0;
         float xk;
         Interval ab_copy = Interval(ab->a, ab->b);
@@ -49,7 +52,9 @@ namespace CoMa {
      *
      *
      * */
-    float newton(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
+    template<typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+    T newton(T f(T), Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
         float xk = (ab->a + ab->b) / 2;
         int k = 0;
         while (k < max_iter) {
@@ -76,7 +81,9 @@ namespace CoMa {
      *  TODO: initialization here could be more optimized
      *
      * */
-    float secant(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
+    template<typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+    T secant(T f(T), Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
 
         float xk = (ab->a + ab->b) / 2;
         float xk_1 = xk / 2;
@@ -109,7 +116,9 @@ namespace CoMa {
      *
      *
      * */
-    float chord(float f(float), Interval *ab, float tol = .00001, int max_iter = 10000, bool verbose = true) {
+    template<typename T,
+             typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+    T chord(T f(T), Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
         float xk = (ab->a + ab->b) / 2;
         int k = 0;
         float q = (f(ab->b) - f(ab->a)) / (ab->b - ab->a);
