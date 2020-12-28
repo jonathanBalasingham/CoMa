@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <iostream>
+#include <map>
 #include "util.h"
 
 // TODO: Change interval argument
@@ -141,5 +142,21 @@ namespace CoMa {
             std::cout << "Warning: max iterations reached without reaching tolerance" << std::endl;
 
         return xk;
+    }
+
+    template<typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+    const std::map<std::string, T (*)(T)> method_map = {
+            {"newton", newton}, {"chord", chord}, {"bisection", bisection}, {"secant", secant}};
+
+
+    template<typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
+    T find_root(T f(T), Interval *ab, std::string method="newton", T tol = .00001, int max_iter = 10000, bool verbose = true){
+        try {
+            method_map<T>(f, ab, tol, max_iter, verbose);
+        } catch (std::out_of_range&) {
+            std::cerr << "Method type of: " << method << " not supported" << std::endl;
+        }
     }
 }
