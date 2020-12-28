@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jon/CLionProjects/CoMa/Matrix.h
+iterator
+-
+tuple
+-
+
+/home/jon/CLionProjects/CoMa/MatrixOperations.h
+Matrix.h
+/home/jon/CLionProjects/CoMa/Matrix.h
+cmath
+-
+
+/home/jon/CLionProjects/CoMa/NonlinearEquations.h
+cstdlib
+-
+cstdio
+-
+iostream
+-
+util.h
+/home/jon/CLionProjects/CoMa/util.h
+
+/home/jon/CLionProjects/CoMa/library.h
+
+/home/jon/CLionProjects/CoMa/main.cpp
+library.h
+/home/jon/CLionProjects/CoMa/library.h
+NonlinearEquations.h
+/home/jon/CLionProjects/CoMa/NonlinearEquations.h
+MatrixOperations.h
+/home/jon/CLionProjects/CoMa/MatrixOperations.h
+
+/home/jon/CLionProjects/CoMa/util.h
+

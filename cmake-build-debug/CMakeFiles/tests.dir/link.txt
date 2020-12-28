@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/tests.dir/main.cpp.o  -o tests  libCoMa.a libCoMa.a -lBoost 

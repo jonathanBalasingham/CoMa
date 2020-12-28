@@ -5,6 +5,8 @@
 #ifndef COMA_MATRIXOPERATIONS_H
 #define COMA_MATRIXOPERATIONS_H
 
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
 #include "Matrix.h"
 #include <cmath>
 
