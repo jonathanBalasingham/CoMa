@@ -5,15 +5,32 @@
 #ifndef COMA_SYSTEMOFEQUATIONS_H
 #define COMA_SYSTEMOFEQUATIONS_H
 
-#include "MatrixOperations.h"
+#include <boost/numeric/ublas/matrix.hpp>
 
 namespace CoMa {
+    using namespace boost::numeric::ublas;
 
-    Matrix* jacobi(float** A, float* b, float tol=0.00001, int max_iters=1000){
+    template<
+            typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+    >
+    matrix<T> jacobi(matrix<T>, vector<T> b, T tol=0.00001, int max_iters=1000){
 
     }
 
-    Matrix* stat_richardson(){
+    template<
+            typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+    >
+    matrix<T> gauss_seidel(matrix<T>, vector<T> b, T tol=0.00001, int max_iters=1000){
+
+    }
+
+    template<
+            typename T,
+            typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
+    >
+    matrix<T> stationary_richardson(matrix<T>, vector<T> b, T tol=0.00001, int max_iters=1000){
 
     }
 
