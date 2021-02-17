@@ -2,7 +2,7 @@
 // Created by jon on 12/7/20.
 //
 #include "library.h"
-#include "NonlinearEquations.h"
+#include "src/NonlinearEq/NonlinearEquations.h"
 #include "MatrixOperations.h"
 
 

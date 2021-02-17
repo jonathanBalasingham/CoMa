@@ -172,9 +172,6 @@
 		<Unit filename="/home/jon/CLionProjects/CoMa/MatrixOperations.h">
 			<Option target="CoMa"/>
 		</Unit>
-		<Unit filename="/home/jon/CLionProjects/CoMa/NonlinearEquations.h">
-			<Option target="CoMa"/>
-		</Unit>
 		<Unit filename="/home/jon/CLionProjects/CoMa/SystemOfEquations.h">
 			<Option target="CoMa"/>
 		</Unit>
@@ -186,6 +183,9 @@
 		</Unit>
 		<Unit filename="/home/jon/CLionProjects/CoMa/main.cpp">
 			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/home/jon/CLionProjects/CoMa/src/NonlinearEq/NonlinearEquations.h">
+			<Option target="CoMa"/>
 		</Unit>
 		<Unit filename="/home/jon/CLionProjects/CoMa/util.h">
 			<Option target="CoMa"/>

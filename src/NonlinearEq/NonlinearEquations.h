@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <iostream>
 #include <map>
-#include "util.h"
+#include "../../util.h"
 
 // TODO: Change interval argument
 namespace CoMa {
