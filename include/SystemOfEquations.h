@@ -14,7 +14,7 @@ namespace CoMa {
             typename T,
             typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
     >
-    matrix<T> jacobi(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
+    matrix<T> _jacobi(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
 
     }
 
@@ -22,7 +22,7 @@ namespace CoMa {
             typename T,
             typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
     >
-    matrix<T> gauss_seidel(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
+    matrix<T> _gauss_seidel(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
 
     }
 
@@ -30,7 +30,7 @@ namespace CoMa {
             typename T,
             typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
     >
-    matrix<T> stationary_richardson(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
+    matrix<T> _stationary_richardson(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
 
     }
 
@@ -38,7 +38,7 @@ namespace CoMa {
             typename T,
             typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type
     >
-    matrix<T> basic_stationary(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
+    matrix<T> _basic_stationary(matrix<T> A, vector<T> b, T tol=0.00001, int max_iters=1000){
         const auto I = identity_matrix(A.size1(), A.size2());
         auto iter_matrix = I - A;
         

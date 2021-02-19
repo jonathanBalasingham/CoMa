@@ -15,17 +15,16 @@ template<typename T,
 class ODEProblem {
 public:
     ODEProblem(T f(T), std::tuple<T> tspan, std::vector<T> u0): tspan(tspan), u0(u0) { f = f; };
-    boost::numeric::ublas::vector<T> solve();
+    boost::numeric::ublas::vector<T> solve() {
+        return boost::numeric::ublas::vector<T>();
+    }
+
 private:
     T f(T);
     std::tuple<T> tspan;
     boost::numeric::ublas::vector<T> u0;
 };
 
-template<typename T, typename X>
-boost::numeric::ublas::vector<T> ODEProblem<T, <unnamed>>::solve() {
-    return boost::numeric::ublas::vector<T>();
-}
 
 
 #endif //COMA_ODEPROBLEM_HPP
