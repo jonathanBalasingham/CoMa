@@ -2,7 +2,7 @@
 // Created by jon on 12/7/20.
 //
 #include "library.h"
-#include "include/NonlinearEquations.h"
+#include "include/NonlinearEquations.hpp"
 #include "deprecated/MatrixOperations.h"
 
 
@@ -14,7 +14,7 @@ int main(){
     using namespace CoMa;
     auto ab = new CoMa::Interval(-10., 5);
 
-    float answer1 = CoMa::bisection(f, ab, .0000001);
+    float answer1 = CoMa::bisection(&f, ab, .0000001);
     std::cout << answer1 << std::endl;
 
     float answer2 = CoMa::newton(f, ab, .0000001);

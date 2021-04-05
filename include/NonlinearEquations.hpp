@@ -7,23 +7,21 @@
 // TODO: Change interval argument
 namespace CoMa {
 
-    namespace NonlinearEq {
-        /*
-         *
-         *
-         *
-         */
         template<typename T,
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
-        T bisection(T f(T), Util::Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
+        T bisection(T f(T), const Util::Interval &ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
+            /* Bisection Algorithm
+             * f : function of single variable taking in either float or double
+             * ab
+             */
             int k = 0;
             float xk;
-            Util::Interval ab_copy = Util::Interval(ab->a, ab->b);
+            Util::Interval ab_copy = Util::Interval(ab.a, ab.b);
 
-            if (std::abs(f(ab->a)) <= tol)
-                return ab->a;
-            else if (std::abs(f(ab->b)) <= tol)
-                return ab->b;
+            if (std::abs(f(ab.a)) <= tol)
+                return ab.a;
+            else if (std::abs(f(ab.b)) <= tol)
+                return ab.b;
 
 
             while (k <= max_iter) {
@@ -56,8 +54,8 @@ namespace CoMa {
          * */
         template<typename T,
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
-        T newton(T f(T), Util::Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
-            float xk = (ab->a + ab->b) / 2;
+        T newton(T f(T), const Util::Interval &ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
+            float xk = (ab.a + ab.b) / 2;
             int k = 0;
             while (k < max_iter) {
                 xk = xk - f(xk) / derivative_at(f, xk);
@@ -84,9 +82,9 @@ namespace CoMa {
          * */
         template<typename T,
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
-        T secant(T f(T), Util::Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
+        T secant(T f(T), const Util::Interval &ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
 
-            float xk = (ab->a + ab->b) / 2;
+            float xk = (ab.a + ab.b) / 2;
             float xk_1 = xk / 2;
 
             int k = 0;
@@ -119,10 +117,10 @@ namespace CoMa {
          * */
         template<typename T,
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
-        T chord(T f(T), Util::Interval *ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
-            float xk = (ab->a + ab->b) / 2;
+        T chord(T f(T), const Util::Interval &ab, T tol = .00001, int max_iter = 10000, bool verbose = true) {
+            float xk = (ab.a + ab.b) / 2;
             int k = 0;
-            float q = (f(ab->b) - f(ab->a)) / (ab->b - ab->a);
+            float q = (f(ab.b) - f(ab.a)) / (ab.b - ab.a);
 
             while (k < max_iter) {
                 xk = xk - f(xk) / q;
@@ -151,7 +149,7 @@ namespace CoMa {
 
         template<typename T,
                 typename = typename std::enable_if<std::is_arithmetic<T>::value, T>::type>
-        T find_root(T f(T), Util::Interval *ab, std::string method="newton", T tol = .00001, int max_iter = 10000, bool verbose = true){
+        T find_root(T f(T), Util::Interval *ab, const std::string& method="newton", T tol = .00001, int max_iter = 10000, bool verbose = true){
             try {
                 method_map<T>(f, ab, tol, max_iter, verbose);
             } catch (std::out_of_range&) {
@@ -159,4 +157,3 @@ namespace CoMa {
             }
         }
     }
-}
