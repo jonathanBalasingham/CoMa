@@ -5,36 +5,41 @@
 #ifndef COMA_UTIL_H
 #define COMA_UTIL_H
 
-namespace CoMa {
+#include <string>
+#include <stdexcept>
 
-    struct Interval {
-        float a;
-        float b;
-        Interval(float begin, float end){
-            if (end < begin){
-                throw std::invalid_argument("Cannot create interval where a > b");
-            } else {
-                a = begin;
-                b = end;
+namespace CoMa {
+    namespace Util {
+
+        struct Interval {
+            float a;
+            float b;
+            Interval(float begin, float end){
+                if (end < begin){
+                    throw std::invalid_argument("Cannot create interval where a > b");
+                } else {
+                    a = begin;
+                    b = end;
+                }
+            }
+        };
+
+        // TODO: clean up
+        float derivative_at(float f(float), float x, float h=0.0001, std::string method="center") {
+            if (method == "center") {
+                return (f(x+h/2) - f(x-h/2)) / h;
+            }
+
+            if (method == "forward") {
+                return (f(x+h) - f(x)) / h;
+            }
+
+            if (method == "backward"){
+                return (f(x) - f(x-h)) / h;
             }
         }
-    };
 
-    // TODO: clean up
-    float derivative_at(float f(float), float x, float h=0.0001, std::string method="center") {
-        if (method == "center") {
-            return (f(x+h/2) - f(x-h/2)) / h;
-        }
-
-        if (method == "forward") {
-            return (f(x+h) - f(x)) / h;
-        }
-
-        if (method == "backward"){
-            return (f(x) - f(x-h)) / h;
-        }
     }
-
 }
 
 #endif //COMA_UTIL_H

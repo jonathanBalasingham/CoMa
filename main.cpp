@@ -2,8 +2,8 @@
 // Created by jon on 12/7/20.
 //
 #include "library.h"
-#include "src/NonlinearEq/NonlinearEquations.h"
-#include "MatrixOperations.h"
+#include "include/NonlinearEquations.h"
+#include "deprecated/MatrixOperations.h"
 
 
 float f(float x){
